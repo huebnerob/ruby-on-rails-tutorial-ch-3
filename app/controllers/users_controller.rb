@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+  before_action :no_user,        only: [:create, :new]
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :not_self_user,  only: :destroy
   before_action :admin_user,     only: :destroy
 
   def index
@@ -56,6 +58,15 @@ class UsersController < ApplicationController
     end
 
     # Before filters
+
+    def no_user
+      redirect_to(root_url) if signed_in?
+    end
+
+    def not_self_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) if current_user?(@user)
+    end
 
     def signed_in_user
       unless signed_in?
