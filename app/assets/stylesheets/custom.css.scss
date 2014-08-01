@@ -189,6 +189,10 @@ input {
   }
 }
 
+.delete-link {
+  color: red;
+}
+
 /* microposts */
 
 .microposts {
@@ -215,4 +219,8 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.charcount {
+  padding: 3px 0px 8px 0px;
 }

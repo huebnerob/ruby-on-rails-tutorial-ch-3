@@ -15,3 +15,16 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require static_pages
+
+countChars = function(countfrom, displayto) {
+    var len;
+    len = document.getElementById(countfrom).value.length;
+    var lenText;
+    if( len == 1 ) {
+    	lenText = "1 character typed."
+    } else {
+    	lenText = "" + len + " characters typed."
+    }
+    return document.getElementById(displayto).innerHTML = lenText;
+};
